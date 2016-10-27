@@ -1044,6 +1044,21 @@ elsif (get_var("QA_TESTSET")) {
     }
     loadtest "qa_automation/" . get_var("QA_TESTSET") . ".pm";
 }
+elsif (get_var("PROXY_VIRT_AUTOTEST")) {
+    if (get_var("VIRT_PRJ1_GUEST_INSTALL")) {
+        loadtest "virt_autotest/proxy_method/proxymode_login_proxy.pm";
+        loadtest "virt_autotest/proxy_method/proxymode_conn_slave.pm";
+        #loadtest "virt_autotest/proxy_method/proxymode_init_pxe_install.pm";
+        loadtest "virt_autotest/proxy_method/proxymode_redirect_serial1.pm";
+        loadtest "virt_autotest/proxy_method/install_package.pm";
+        loadtest "virt_autotest/proxy_method/reboot_and_wait_up_normal1.pm";
+        loadtest "virt_autotest/proxy_method/proxymode_redirect_serial2.pm";
+        loadtest "virt_autotest/proxy_method/update_package.pm";
+        loadtest "virt_autotest/proxy_method/reboot_and_wait_up_normal2.pm";
+        loadtest "virt_autotest/proxy_method/proxymode_redirect_serial3.pm";
+        loadtest "virt_autotest/proxy_method/guest_installation_run.pm";
+	}
+}
 elsif (get_var("VIRT_AUTOTEST")) {
     load_boot_tests();
     load_inst_tests();
